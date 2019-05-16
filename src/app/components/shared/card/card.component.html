@@ -1,0 +1,7 @@
+<div (click)="handleCardPressed()" class="card-container" [ngClass]="{'red': isRedCard, 'blue': !isRedCard}">
+  <img [src]="cardAsset"/>
+  <img *ngFor="let arrow of card.arrows" [src]="'/assets/' + arrow + '.png'"/>
+  <div class="card-stats">
+    <p>{{card.statsString}}</p>
+  </div>
+</div>

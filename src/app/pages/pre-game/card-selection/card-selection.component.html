@@ -1,0 +1,25 @@
+<div class="card-selection-container">
+  <div class="left-container nes-container is-dark with-title">
+    <p class="title">Available Cards</p>
+    <button class="full-width nes-btn is-primary" (click)="pickFiveRandom()">Pick Random Cards</button>
+    <br/>
+    <div>
+      <div class="available-card-wrapper" *ngFor="let card of availableCards; let index = index">
+        <app-card (cardPressed)="moveToSelected($event, index)" [card]="card"></app-card>
+      </div>
+      <div class="continue-overlay" *ngIf="selectedCards.length === 5">
+        <button class="continue-button nes-btn is-success">Continue</button>
+      </div>
+    </div>
+  </div>
+  <div class="right-container nes-container is-light with-title">
+    <p class="title">Selected Cards</p>
+    <button class="full-width nes-btn is-primary" (click)="clearSelected()">Clear Cards</button>
+    <br/>
+    <div class="selected-display">
+      <div class="selected-card-wrapper" *ngFor="let card of selectedCards; let index = index">
+        <app-card (cardPressed)="moveToAvailable($event, index)" [card]="card"></app-card>
+      </div>
+    </div>
+  </div>
+</div>
