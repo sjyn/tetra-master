@@ -1,4 +1,4 @@
-import {getRandom, uuidv4} from './utils';
+import {getRandom, uuidv4} from '../utils';
 
 export enum CardArrow {
   ArrowBottom = 'Arrow_Bottom',

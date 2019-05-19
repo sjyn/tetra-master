@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Card, ICard} from '../../../classes/card';
-import {AudioPlayerService, SoundEffect} from '../../../services/audio-player.service';
+import {Card, ICard} from '../../../classes/models/card';
+import {AudioPlayerService, SoundEffect} from '../../../services/audio-player/audio-player.service';
 
 @Component({
   selector: 'app-card',

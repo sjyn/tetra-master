@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PreGameComponent } from './pre-game.component';
+import { LevelSelectComponent } from './level-select.component';
 
-describe('PreGameComponent', () => {
-  let component: PreGameComponent;
-  let fixture: ComponentFixture<PreGameComponent>;
+describe('LevelSelectComponent', () => {
+  let component: LevelSelectComponent;
+  let fixture: ComponentFixture<LevelSelectComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PreGameComponent ]
+      declarations: [ LevelSelectComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PreGameComponent);
+    fixture = TestBed.createComponent(LevelSelectComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

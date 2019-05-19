@@ -20,3 +20,7 @@ export function getRandom<T>(arr: T[], n: number): T[] {
   }
   return result;
 }
+
+export function getOrDefault<T>(field: string, defaultValue: T, model?: any): T {
+  return !!model ? model[field] : defaultValue;
+}

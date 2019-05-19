@@ -1,0 +1,21 @@
+<div class="profile-selection">
+  <h1 class="title">Select a Profile</h1>
+  <div class="profiles-container" *ngIf="profiles.length > 0 && !loading">
+    <ng-container *ngFor="let profile of profiles">
+      <app-profile-card
+        [editing]="profile.id === null"
+        (edited)="saveProfile($event)"
+        (deleted)="deleteProfile($event)"
+        (chosen)="selectProfile($event)"
+        [profile]="profile">
+      </app-profile-card>
+      <br/>
+    </ng-container>
+  </div>
+  <div class="no-profiles-container" *ngIf="profiles.length === 0 && !loading">
+    You don't have any profiles!
+  </div>
+  <button (click)="addProfile()" class="create-profile nes-btn is-primary">
+    Create New Profile
+  </button>
+</div>

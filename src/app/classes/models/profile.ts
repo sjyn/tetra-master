@@ -1,0 +1,25 @@
+import {Card, ICard} from './card';
+import {getOrDefault} from '../utils';
+
+export interface IProfile {
+  cards: ICard[];
+  name: string;
+  id: string;
+  level: number;
+}
+
+export class Profile implements IProfile {
+  cards: Card[];
+  id: string;
+  level: number;
+  name: string;
+
+  constructor(profile?: IProfile) {
+    this.id = getOrDefault('id', null, profile);
+    this.cards = getOrDefault('cards', [], profile)
+      .map((card) => new Card(card));
+    this.level = getOrDefault('level', 0, profile);
+    this.name = getOrDefault('name', '', profile);
+  }
+
+}

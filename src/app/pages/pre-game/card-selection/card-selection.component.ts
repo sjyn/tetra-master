@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Card, ICard} from '../../../classes/card';
+import {Card, ICard} from '../../../classes/models/card';
 import {transferArrayItem} from '@angular/cdk/drag-drop';
 import {getRandom} from '../../../classes/utils';
-import {AudioPlayerService, MusicTrack, SoundEffect} from '../../../services/audio-player.service';
+import {AudioPlayerService, MusicTrack, SoundEffect} from '../../../services/audio-player/audio-player.service';
 
 @Component({
   selector: 'app-card-selection',

@@ -7,7 +7,7 @@ const routes: Routes = [
     loadChildren: './pages/main-menu/main-menu.module#MainMenuModule',
   },
   {
-    path: 'staging',
+    path: 'setup',
     loadChildren: './pages/pre-game/pre-game.module#PreGameModule',
   },
   {

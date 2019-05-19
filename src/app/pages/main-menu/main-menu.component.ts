@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {AudioPlayerService, MusicTrack, SoundEffect} from '../../services/audio-player.service';
+import {AudioPlayerService, MusicTrack, SoundEffect} from '../../services/audio-player/audio-player.service';
 
 @Component({
   selector: 'app-main-menu',
@@ -23,7 +23,7 @@ export class MainMenuComponent implements OnInit {
 
   public startAIGame() {
     this.audioService.playSound(SoundEffect.MenuSelection);
-    this.router.navigate(['/staging', true]);
+    this.router.navigate(['/setup']);
   }
 
   public startTwoPlayerSession() {

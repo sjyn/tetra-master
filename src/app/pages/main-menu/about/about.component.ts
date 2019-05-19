@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AudioPlayerService, SoundEffect} from '../../../services/audio-player.service';
+import {AudioPlayerService, SoundEffect} from '../../../services/audio-player/audio-player.service';
 
 @Component({
   selector: 'app-about',
