@@ -9,10 +9,10 @@ import {AudioPlayerService, SoundEffect} from '../../../services/audio-player/au
 })
 export class CardComponent implements OnInit {
   @Input() card: Card;
-  @Output() cardPressed: EventEmitter<ICard>;
+  @Output() cardPressed: EventEmitter<Card>;
 
   public get cardAsset(): string {
-    return `/assets/${this.card.cardImage}.gif`;
+    return `/assets/cards/${this.card.cardImage}.gif`;
   }
 
   public get isRedCard(): boolean {

@@ -131,8 +131,15 @@ export class DatabaseService {
         if (!this.database.objectStoreNames.contains(PROFILES_STORE)) {
           this.database.createObjectStore(PROFILES_STORE);
         }
-        this.loadingDatabase = false;
-        obs.next(this.database);
+        const transaction: IDBTransaction = event.target.transaction;
+        transaction.oncomplete = () => {
+          this.loadingDatabase = false;
+          obs.next(this.database);
+        };
+        transaction.onerror = () => {
+          this.loadingDatabase = false;
+          obs.error(transaction.error);
+        };
       };
       request.onsuccess = () => {
         this.database = request.result;

@@ -1,0 +1,9 @@
+<div class="nes-container is-rounded is-dark">
+  <table class="board">
+    <tr *ngFor="let row of board.board">
+      <td class="board-item" *ngFor="let card of row">
+        <app-card *ngIf="!!card" [card]="card"></app-card>
+      </td>
+    </tr>
+  </table>
+</div>

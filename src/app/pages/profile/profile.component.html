@@ -1,0 +1,22 @@
+<div class="profile-edit-container nes-container is-dark" *ngIf="!!profile">
+  <form #profileForm="ngForm">
+    <label>
+      Profile Name
+      <input
+        [(ngModel)]="profile.name"
+        type="text"
+        required
+        autocomplete="new-name"
+        name="profile-name"
+        class="nes-input"/>
+    </label>
+    <br/>
+    <button
+      [disabled]="!profileForm.dirty || !profileForm.valid"
+      [ngClass]="{'is-disabled': !profileForm.dirty|| !profileForm.valid}"
+      class="nes-btn"
+      (click)="save()">
+      Save
+    </button>
+  </form>
+</div>

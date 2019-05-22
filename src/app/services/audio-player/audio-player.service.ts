@@ -27,7 +27,7 @@ export class AudioPlayerService {
     return this.soundEffectPlayer.play();
   }
 
-  public playMusic(music: MusicTrack, loop: boolean = true) {
+  public playMusic(music: MusicTrack | string, loop: boolean = true) {
     const fullPath = `/assets/music/${music}`;
     this.musicPlayer.src = fullPath;
     if (loop) {
@@ -41,7 +41,9 @@ export class AudioPlayerService {
   }
 
   public stopCurrentMusic() {
-    this.musicPlayer.stop();
+    // this.musicPlayer.stop();
+    this.pauseCurrentMusic();
+    this.musicPlayer = new Audio();
   }
 
   public pauseCurrentMusic() {

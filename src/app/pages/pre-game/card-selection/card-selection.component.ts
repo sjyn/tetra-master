@@ -3,6 +3,10 @@ import {Card, ICard} from '../../../classes/models/card';
 import {transferArrayItem} from '@angular/cdk/drag-drop';
 import {getRandom} from '../../../classes/utils';
 import {AudioPlayerService, MusicTrack, SoundEffect} from '../../../services/audio-player/audio-player.service';
+import {ProfileService} from '../../../services/profile/profile.service';
+import {take} from 'rxjs/operators';
+import {GameStateService} from '../../../services/game-state/game-state.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-card-selection',
@@ -15,15 +19,21 @@ export class CardSelectionComponent implements OnInit {
 
   constructor(
     private audioPlayer: AudioPlayerService,
+    private profileService: ProfileService,
+    private gameService: GameStateService,
+    private router: Router,
   ) {
   }
 
   ngOnInit() {
     this.selectedCards = [];
     this.availableCards = [];
-    for (let i = 0; i < 100; i++) {
-      this.availableCards.push(Card.generateRandomCard('red'));
-    }
+    this.profileService.getProfile()
+      .pipe(take(1))
+      .subscribe((profile) => {
+        this.availableCards = profile.cards
+          .map((card) => new Card(card));
+      });
     if (!this.audioPlayer.isMusicPlaying()) {
       this.audioPlayer.playMusic(MusicTrack.MenuMusic);
     }
@@ -53,4 +63,8 @@ export class CardSelectionComponent implements OnInit {
     transferArrayItem(this.selectedCards, this.availableCards, cardIndex, this.availableCards.length);
   }
 
+  public cardsSelected() {
+    this.gameService.playerCards = this.selectedCards;
+    this.router.navigate(['/game']);
+  }
 }

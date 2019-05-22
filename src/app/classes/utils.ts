@@ -6,6 +6,17 @@ export function uuidv4() {
   });
 }
 
+export function generateUniqueRandomsInRange(numToGen: number, upperBound, lowerBound: number = 0): number[] {
+  const arr = [];
+  while (arr.length < numToGen) {
+    const r = Math.floor(Math.random() * upperBound) + 1;
+    if (arr.indexOf(r) === -1) {
+      arr.push(r);
+    }
+  }
+  return arr;
+}
+
 export function getRandom<T>(arr: T[], n: number): T[] {
   const result = new Array(n);
   let len = arr.length;

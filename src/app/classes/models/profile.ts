@@ -16,10 +16,17 @@ export class Profile implements IProfile {
 
   constructor(profile?: IProfile) {
     this.id = getOrDefault('id', null, profile);
-    this.cards = getOrDefault('cards', [], profile)
-      .map((card) => new Card(card));
+    this.populateCards(profile);
     this.level = getOrDefault('level', 0, profile);
     this.name = getOrDefault('name', '', profile);
+  }
+
+  private populateCards(profile?: IProfile) {
+    this.cards = getOrDefault('cards', [], profile)
+      .map((card) => new Card(card));
+    if (this.cards.length === 0) {
+      this.cards = Card.starterPack();
+    }
   }
 
 }

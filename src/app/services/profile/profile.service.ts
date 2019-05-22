@@ -3,6 +3,7 @@ import {DatabaseService} from '../database/database.service';
 import {IProfile} from '../../classes/models/profile';
 import {Observable} from 'rxjs';
 import {ObjectStore} from '../database/object-store';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -18,8 +19,13 @@ export class ProfileService {
     return this.databaseService.saveEntity(ObjectStore.Profiles, profile);
   }
 
-  public getProfile(id: string): Observable<IProfile> {
-    return this.databaseService.getEntity(ObjectStore.Profiles, id);
+  public getProfile(): Observable<IProfile> {
+    return this.getAllProfiles()
+      .pipe(
+        map((profiles: IProfile[]) => {
+          return profiles[0];
+        }),
+      );
   }
 
   public getAllProfiles(): Observable<IProfile[]> {

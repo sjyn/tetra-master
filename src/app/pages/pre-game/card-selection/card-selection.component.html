@@ -8,7 +8,7 @@
         <app-card (cardPressed)="moveToSelected($event, index)" [card]="card"></app-card>
       </div>
       <div class="continue-overlay" *ngIf="selectedCards.length === 5">
-        <button class="continue-button nes-btn is-success">Continue</button>
+        <button (click)="cardsSelected()" class="continue-button nes-btn is-success">Continue</button>
       </div>
     </div>
   </div>

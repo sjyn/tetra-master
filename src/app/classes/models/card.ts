@@ -11,6 +11,8 @@ export enum CardArrow {
   ArrowTopRight = 'Arrow_Top_Right',
 }
 
+export const BLOCKER_ID = 'blocker';
+
 export interface ICard {
   id: string;
   cardImage: string;
@@ -35,6 +37,10 @@ export class Card implements ICard {
   physicalDefence: number;
   power: number;
 
+  public get isBlocker(): boolean {
+    return this.id === BLOCKER_ID;
+  }
+
   public get statsString(): string {
     const stats = this.power.toString(16) +
       this.battleClass +
@@ -52,6 +58,19 @@ export class Card implements ICard {
     this.battleClass = !!card ? card.battleClass : 'P';
     this.physicalDefence = !!card ? card.physicalDefence : 0;
     this.magicalDefence = !!card ? card.magicalDefence : 0;
+  }
+
+  public static blockerCard(): Card {
+    return new Card({
+      arrows: new Set<CardArrow>(),
+      battleClass: undefined,
+      cardColor: undefined,
+      cardImage: 'blocked',
+      id: BLOCKER_ID,
+      magicalDefence: 0,
+      physicalDefence: 0,
+      power: 0,
+    });
   }
 
   public static generateRandomCard(color: CardColor): Card {
@@ -96,6 +115,35 @@ export class Card implements ICard {
       physicalDefence: Math.floor(Math.random() * 15),
       magicalDefence: Math.floor(Math.random() * 15),
     });
+  }
+
+  public static starterPack(): Card[] {
+    const battleClasses = ['P', 'M', 'X', 'A'];
+    const cardImages = ['001', '002', '003', '004'];
+    const cards = [];
+    cardImages.forEach((image) => {
+      battleClasses.forEach((bc) => {
+        const card = new Card({
+          arrows: Card.genArrows(),
+          battleClass: bc as CardBattleClass,
+          cardColor: 'red',
+          cardImage: image,
+          id: uuidv4(),
+          physicalDefence: Math.floor(Math.random() * 15),
+          magicalDefence: Math.floor(Math.random() * 15),
+          power: Math.floor(Math.random() * 15),
+        });
+        cards.push(card);
+      });
+    });
+    return cards;
+  }
+
+  private static genArrows(): Set<CardArrow> {
+    const allKeys = Object.keys(CardArrow);
+    const outCount = Math.floor(Math.random() * allKeys.length);
+    const arrows = getRandom(allKeys, outCount);
+    return new Set(arrows.map((key) => CardArrow[key]));
   }
 }
 

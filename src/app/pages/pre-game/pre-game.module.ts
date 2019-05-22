@@ -5,10 +5,9 @@ import {PreGameRoutingModule} from './pre-game-routing.module';
 import {CardSelectionComponent} from './card-selection/card-selection.component';
 import {SharedModule} from '../../components/shared/shared.module';
 import {DragDropModule} from '@angular/cdk/drag-drop';
-import {ProfileSelectionComponent} from './profile-selection/profile-selection.component';
 import {LevelSelectComponent} from './level-select/level-select.component';
-import { ProfileCardComponent } from './profile-selection/profile-card/profile-card.component';
 import {FormsModule} from '@angular/forms';
+import {LevelCardComponent} from './level-select/level-card/level-card.component';
 
 @NgModule({
   imports: [
@@ -20,9 +19,8 @@ import {FormsModule} from '@angular/forms';
   ],
   declarations: [
     CardSelectionComponent,
-    ProfileSelectionComponent,
     LevelSelectComponent,
-    ProfileCardComponent,
+    LevelCardComponent,
   ],
 })
 export class PreGameModule {

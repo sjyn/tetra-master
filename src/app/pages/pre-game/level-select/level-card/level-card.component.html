@@ -1,0 +1,9 @@
+<button
+  [ngClass]="{'is-disabled': disabled, 'is-success': beaten}"
+  class="nes-btn"
+  (click)="selectLevel()">
+  <div class="level-card nes-container">
+    <span class="nes-text">Level {{ index + 1 }}</span><br/>
+    <span class="nes-text">{{ level.name }}</span>
+  </div>
+</button>

@@ -1,16 +1,19 @@
 import {Injectable} from '@angular/core';
-import {IProfile} from '../../classes/models/profile';
+import {ILevel} from '../../classes/models/level';
+import {ICard} from '../../classes/models/card';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GameStateService {
-  private profile: IProfile;
+  public level: ILevel;
+  public playerCards: ICard[];
 
   constructor() {
   }
 
-  public setProfile(profile: IProfile) {
-    this.profile = profile;
+  public clear() {
+    this.level = undefined;
+    this.playerCards = undefined;
   }
 }

@@ -1,0 +1,12 @@
+<div class="deck-container">
+  <ng-container *ngIf="playerDeck">
+    <app-card
+      *ngFor="let card of cards"
+      (cardPressed)="cardPressed($event)"
+      [card]="card">
+    </app-card>
+  </ng-container>
+  <ng-container *ngIf="!playerDeck">
+    <app-card *ngFor="let card of cards" [card]="card"></app-card>
+  </ng-container>
+</div>

@@ -1,3 +1,19 @@
-<p>
-  level-select works!
-</p>
+<div class="container">
+  <div class="title">
+    <app-back-button (back)="goBack()"></app-back-button>
+    <h1>Select Level</h1>
+  </div>
+  <div class="levels-container">
+    <div
+      class="level-card-wrapper"
+      *ngFor="let level of levels; let index = index">
+      <app-level-card
+        [index]="index"
+        [level]="level"
+        [beaten]="index < profile.level"
+        [disabled]="profile.level < index"
+        (selected)="levelSelected($event)">
+      </app-level-card>
+    </div>
+  </div>
+</div>

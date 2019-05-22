@@ -1,0 +1,25 @@
+{
+  "levels": [
+    {
+      "name": "Bartender",
+      "cards": [
+        "001",
+        "003",
+        "017",
+        "006",
+        "021"
+      ],
+      "track": "A_Conversation_with_Saul.mp3"
+    },
+    {
+      "name": "Soldier",
+      "cards": [
+        "001",
+        "003",
+        "017",
+        "006",
+        "021"
+      ]
+    }
+  ]
+}

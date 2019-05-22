@@ -1,0 +1,14 @@
+<div *ngIf="!loading" class="game-container flex-container centered">
+  <app-deck
+    [cards]="playerCards"
+    [playerDeck]="true">
+  </app-deck>
+  <app-board [board]="board"></app-board>
+  <app-deck
+    [cards]="challengerCards"
+    [playerDeck]="false">
+  </app-deck>
+</div>
+<div *ngIf="loading" class="flex-container loading-container">
+  <progress class="nes-progress" [value]="loadingProgress" max="100"></progress>
+</div>
